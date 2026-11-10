@@ -1,4 +1,9 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function TentangPage() {
+  const router = useRouter();
   return (
     <main className="p-8 font-sans">
       <div className="max-w-3xl mx-auto my-8 p-6 bg-white dark:bg-zinc-900 border-2 border-[#6B3FA0]/30 rounded-2xl shadow-md">
@@ -11,6 +16,14 @@ export default function TentangPage() {
           berkonsultasi sebelum memilih produk Mahveen. Dengan senang hati, saya akan membantu
           mengarahkan pilihan produk sesuai dengan kebutuhan kulit Anda.
         </p>
+
+        <button
+          type="button"
+          onClick={() => router.push("/")}
+          className="mt-6 rounded-lg bg-[#6B3FA0] border border-[#D4AF37] px-4 py-2 text-sm font-medium text-white hover:bg-[#583383] transition-colors"
+        >
+          Kembali ke Beranda
+        </button>
       </div>
     </main>
   );
