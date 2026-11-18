@@ -1,4 +1,4 @@
-import Link from "next/link";
+import DaftarTulisan from "./daftar-tulisan";
 
 export default function BlogPage() {
   const articles = [
@@ -25,6 +25,8 @@ export default function BlogPage() {
     },
   ];
 
+  const daftarSlug = articles.map((article) => article.href.replace("/blog/", ""));
+
   return (
     <main className="mx-auto max-w-3xl px-6 py-12">
       <div className="text-center">
@@ -35,27 +37,8 @@ export default function BlogPage() {
         </p>
       </div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        <Link
-          href="/blog/konsep-cantik-mahveen"
-          className="flex min-h-32 items-center justify-center text-center rounded-2xl bg-purple-100 p-6 text-purple-950 shadow-sm transition-all duration-300 hover:bg-purple-900 hover:text-white hover:shadow-xl"
-        >
-          Konsep Cantik Mahveen
-        </Link>
-
-        <Link
-          href="/blog/formulasi-skincare-mahveen"
-          className="flex min-h-32 items-center justify-center text-center rounded-2xl bg-purple-100 p-6 text-purple-950 shadow-sm transition-all duration-300 hover:bg-purple-900 hover:text-white hover:shadow-xl"
-        >
-          Formulasi Skincare Mahveen
-        </Link>
-
-        <Link
-          href="/blog/bebas-krim-racikan"
-          className="flex min-h-32 items-center justify-center text-center rounded-2xl bg-purple-100 p-6 text-purple-950 shadow-sm transition-all duration-300 hover:bg-purple-900 hover:text-white hover:shadow-xl text-center"
-        >
-          Bebas Krim Racikan
-        </Link>
+      <div className="mt-8">
+        <DaftarTulisan daftarSlug={daftarSlug} />
       </div>
     </main>
   );

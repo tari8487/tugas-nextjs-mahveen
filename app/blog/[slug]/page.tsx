@@ -1,4 +1,5 @@
-export default async function TulisanPage({ params }: { params: Promise<{ slug: string }> }) {
+import LikeButton from "./like-button";
+export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
   return (
@@ -12,6 +13,9 @@ export default async function TulisanPage({ params }: { params: Promise<{ slug: 
           mengembalikan kesehatan dan kecantikan alami kulit wajah. Visi kami adalah Wujudkan
           Muslimah Indonesia Bebas dari Krim Abal-Abal dan Krim Racikan Tidak Terstandar.
         </p>
+        <div className="mt-6 pt-4 border-t border-purple-100">
+          <LikeButton slug={slug} />
+        </div>
       </div>
     </main>
   );

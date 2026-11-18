@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center mt-8 sm:mb-8">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center gap-10 py-32 px-16 bg-white dark:bg-black items-center">
+      <main className="flex flex-1 w-full max-w-3xl flex-col items-center gap-10 py-32 px-16 bg-white dark:bg-black">
         <Image
-          className="w-full max-w-[500px] h-auto rounded-lg mb-8"
+          className="w-full max-w-125 h-auto rounded-lg mb-8"
           src="/all-produk.png"
           alt="Mahveen Skincare All Produk"
           width={1054}
