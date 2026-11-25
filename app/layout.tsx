@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+
 import { TemaProvider } from "@/context/tema-context";
+
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Menu from "../components/menu";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Latihan Next.js",

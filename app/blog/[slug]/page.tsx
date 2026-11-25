@@ -1,5 +1,5 @@
-import LikeButton from "./like-button";
-export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
+import LikeButton from "./_components/like-button";
+export default async function DetailBlog({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
   return (
