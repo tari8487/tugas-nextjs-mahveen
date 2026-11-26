@@ -1,24 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
+
+function subscribe(callback: () => void) {
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+}
 
 export default function LikeButton({ slug }: { slug: string }) {
-  const [jumlahSuka, setJumlahSuka] = useState(() => {
-    if (typeof window === "undefined") return 0;
-    const simpanan = localStorage.getItem(`suka-${slug}`);
-    return simpanan === null ? 0 : Number(simpanan);
-  });
+  const key = `suka-${slug}`;
+
+  const jumlahSuka = useSyncExternalStore(
+    subscribe,
+    () => {
+      const simpanan = localStorage.getItem(key);
+      return simpanan === null ? 0 : Number(simpanan);
+    },
+    () => 0,
+  );
 
   function tambahSuka() {
     const jumlahBaru = jumlahSuka + 1;
-    setJumlahSuka(jumlahBaru);
-    if (typeof window !== "undefined") {
-      localStorage.setItem(`suka-${slug}`, String(jumlahBaru));
-    }
+    localStorage.setItem(key, String(jumlahBaru));
+    window.dispatchEvent(new Event("storage"));
   }
 
   return (
-    <button onClick={tambahSuka} className="rounded-lg border px-4 py-2">
+    <button type="button" onClick={tambahSuka} className="rounded-lg border px-4 py-2">
       👍 {jumlahSuka}
     </button>
   );

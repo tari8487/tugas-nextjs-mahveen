@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
-
 import { TemaProvider } from "@/context/tema-context";
-
-import { Geist, Geist_Mono } from "next/font/google";
+import Menu from "@/components/menu";
+import { FavoritProvider } from "@/context/favorit-context";
+import TombolTema from "@/components/tombol-tema";
 import "./globals.css";
-import Menu from "../components/menu";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: "Latihan Next.js",
-  description: "Project latihan Next.js Track",
+  title: "Mahveen Skincare.js",
+  description: "Landing Page Mahveen Skincare",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="id">
       <body>
-        <TemaProvider>{children}</TemaProvider>
+        <TemaProvider>
+          <FavoritProvider>
+            <header className="flex items-center justify-between border-b p-4">
+              <Menu />
+              <TombolTema />
+            </header>
+            <main className="p-4">{children}</main>
+          </FavoritProvider>
+        </TemaProvider>
       </body>
     </html>
   );

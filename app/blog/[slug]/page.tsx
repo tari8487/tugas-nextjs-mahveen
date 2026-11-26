@@ -1,4 +1,5 @@
 import LikeButton from "./_components/like-button";
+import TombolFavorit from "@/components/tombol-favorit";
 export default async function DetailBlog({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
@@ -15,6 +16,9 @@ export default async function DetailBlog({ params }: { params: Promise<{ slug: s
         </p>
         <div className="mt-6 pt-4 border-t border-purple-100">
           <LikeButton slug={slug} />
+          <div className="flex flex-wrap items-center gap-3">
+            <TombolFavorit slug={slug} />
+          </div>
         </div>
       </div>
     </main>
